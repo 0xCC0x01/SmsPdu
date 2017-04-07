@@ -3,12 +3,12 @@
 
 void test00()
 {
-	SmsSubmit pdu =  SmsSubmit("86112233445566", L"Simple constructor", CHARACTER_SET_GSM7);
+    SmsSubmit pdu =  SmsSubmit("86112233445566", L"Simple constructor", CHARACTER_SET_GSM7);
 
-	string result = "0001000E8068112233445566000012D3741BCE2E83C66FF79C2EAF8FE96F39";
+    string result = "0001000E8068112233445566000012D3741BCE2E83C66FF79C2EAF8FE96F39";
 
-	printf("********** PDU TEST 00 **********\n");
-	for (int i = 0; i < pdu.TP_UD.getSegCount(); i++)
+    printf("********** PDU TEST 00 **********\n");
+    for (int i = 0; i < pdu.TP_UD.getSegCount(); i++)
     {
         printf("PDU(%d/%d): %s\n%s\n\n", i+1, pdu.TP_UD.getSegCount(), (pdu.format(i).compare(result) == 0) ? "Correct":"Error", pdu.detailInfo(i).data());
     }
@@ -113,7 +113,7 @@ void test03()
 
     wstring ud = L"ÌìµØÐþ»Æ ÓîÖæºé»Ä ÈÕÔÂÓ¯ê¾ ³½ËÞÁÐÕÅ º®À´ÊîÍù ÇïÊÕ¶¬²Ø ÈòÓà³ÉËê ÂÉÂÀµ÷Ñô ÔÆÌÚÖÂÓê Â¶½áÎªËª ½ðÉúÀöË® Óñ³öÀ¥¸Ô ½£ºÅ¾ÞãÚ Öé³ÆÒ¹¹â ¹ûÕäÀîèÍ ²ËÖØ½æ½ª º£ÏÌºÓµ­ ÁÛÇ±ÓðÏè ÁúÊ¦»ðµÛ Äñ¹ÙÈË»Ê Ê¼ÖÆÎÄ×Ö ÄË·þÒÂÉÑ ÍÆÎ»ÈÃ¹ú ÓÐÓÝÌÕÌÆ";
 
-	pdu.TP_UD.setIndicationUdh(SPECIAL_INDICATION_FAX, 0, 15);
+    pdu.TP_UD.setIndicationUdh(SPECIAL_INDICATION_FAX, 0, 15);
 
     pdu.TP_UD.setPortUdh(1601, 395, false);
 
@@ -134,7 +134,7 @@ void test03()
 
 int main()
 {
-	test00();
+    test00();
     test01();
     test02();
     test03();
