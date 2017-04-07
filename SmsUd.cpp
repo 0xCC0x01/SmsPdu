@@ -209,6 +209,7 @@ static string ConvertUcs2(const wstring ud)
 SmsUd::SmsUd()
 {
     origUdh.TP_UDHL = 0;
+    setUd(L"", CHARACTER_SET_GSM7);
 }
 
 unsigned char SmsUd::getSegCount()
