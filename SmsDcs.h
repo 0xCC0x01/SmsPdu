@@ -3,6 +3,32 @@
 
 #include "Util.h"
 
+enum SMS_DCS
+{
+    DCS_GENERAL_CODING = 0,
+    DCS_MESSAGE_WAITING = 1,
+    DCS_MESSAGE_CLASS = 2
+};
+
+enum MESSAGE_WAITING
+{
+    MESSAGE_WAITING_VOICE = 0,
+    MESSAGE_WAITING_FAX = 1,
+    MESSAGE_WAITING_EMAIL = 2,
+    MESSAGE_WAITING_OTHER = 3
+};
+
+enum MESSAGE_CLASS
+{
+    MESSAGE_CLASS_0 = 0,
+    /* Default meaning: ME-specific */    
+    MESSAGE_CLASS_1 = 1,
+    /* (U)SIM-specific message */
+    MESSAGE_CLASS_2 = 2,
+    /* Default meaning: TE specific */
+    MESSAGE_CLASS_3 = 3
+};
+
 /*
  * 00xxxxxx: General Data Coding indication
  * 01xxxxxx: Message Marked for Automatic Deletion Group
@@ -59,7 +85,7 @@ typedef struct
     unsigned char reserved:1;
     /* 1111 */
     unsigned char subGroup:4;
-}DcsDataCoding;
+}DcsMessageClass;
 
 /* Data Coding Scheme */
 class SmsDcs
@@ -74,10 +100,10 @@ public:
     void setDcs(unsigned char charSet, unsigned char msgClass = 0, bool setClass = false, bool compressed = false, bool autoDelete = false);
 
     /* Set TP-DCS (Message Waiting Indication Group) */
-    void setDcs(unsigned char type, bool active, bool Gsm7, bool autoDelete = false);
+    void setDcs(MESSAGE_WAITING type, bool active = true, bool Gsm7 = false, bool autoDelete = false);
 
     /* Set TP-DCS (Data coding/message class) */
-    void setDcs(unsigned char msgClass, bool Gsm7);
+    void setDcs(MESSAGE_CLASS msgClass, bool Gsm7 = false);
 
     string format();
 };

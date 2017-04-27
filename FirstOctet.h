@@ -41,16 +41,16 @@ public:
     FirstOctet();
 
     /* Set TP-RD */
-    void setRd(bool rd);
+    void setRd(bool rd = true);
 
     /* Set TP-SRR */
-    void setSrr(bool srr);
+    void setSrr(bool srr = true);
 
     /* Set TP-UDHI */
-    void setUdhi(bool udhi);
+    void setUdhi(bool udhi = true);
 
     /* Set TP-RP */
-    void setRp(bool rp);
+    void setRp(bool rp = true);
 
     /* Set TP-MTI */
     void setMti(unsigned char mti);

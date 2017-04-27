@@ -32,21 +32,31 @@ enum SMS_IEI
     IEI_CONCATENATED_16BIT = 0x08
 };
 
-enum SPECIAL_INDICATION
+enum MESSAGE_INDICATION
 {
-    SPECIAL_INDICATION_VOICE = 0,
-    SPECIAL_INDICATION_FAX = 1,
-    SPECIAL_INDICATION_EMAIL = 2,
-    SPECIAL_INDICATION_EXTENDED = 3
+    INDICATION_VOICE = 0,
+    INDICATION_FAX = 1,
+    INDICATION_EMAIL = 2,
+    INDICATION_EXTENDED = 3
+};
+
+enum EXTENDED_MESSAGE_INDICATION
+{
+    EXTENDED_INDICATION_NO = 0,
+    EXTENDED_INDICATION_VIDEO = 1
 };
 
 typedef struct
 {
+    /* Basic message indication type */
     unsigned char type:2;
+    /* Extended message indication type */
     unsigned char extendedType:3;
+    /* Profile ID of the Multiple Subscriber Profile */
     unsigned char profileId:2;
+    /* Message shall be stored or not(0: discard, 1: store) */
     unsigned char store:1;
-}SpecialIndicationHeader;
+}IndicationHeader;
 
 /* Information Element */
 typedef struct

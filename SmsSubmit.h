@@ -23,7 +23,7 @@ public:
 
 public:
     SmsSubmit();
-    SmsSubmit(string da, wstring ud, SMS_CHARACTER_SET charSet);
+    SmsSubmit(string da, wstring ud, SMS_CHARACTER_SET charSet = CHARACTER_SET_UCS2);
 
     string format(unsigned char segIndex);
     string detailInfo(unsigned char segIndex);

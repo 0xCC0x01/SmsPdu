@@ -113,7 +113,7 @@ void test03()
 
     wstring ud = L"天地玄黄 宇宙洪荒 日月盈昃 辰宿列张 寒来暑往 秋收冬藏 闰余成岁 律吕调阳 云腾致雨 露结为霜 金生丽水 玉出昆冈 剑号巨阙 珠称夜光 果珍李柰 菜重芥姜 海咸河淡 鳞潜羽翔 龙师火帝 鸟官人皇 始制文字 乃服衣裳 推位让国 有虞陶唐";
 
-    pdu.TP_UD.setIndicationUdh(SPECIAL_INDICATION_FAX, 0, 15);
+    pdu.TP_UD.setIndicationUdh(INDICATION_FAX, 0, 15);
 
     pdu.TP_UD.setPortUdh(1601, 395, false);
 

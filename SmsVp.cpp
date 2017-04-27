@@ -65,7 +65,7 @@ void SmsVp::setVp(SmsVpA vpA)
 
     if (vpA.timezone < 0)
     {
-		/* bit 3 represents the algebraic sign of this difference (0: positive, 1: negative) */
+        /* bit 3 represents the algebraic sign of this difference (0: positive, 1: negative) */
         vp[13] = D2H((timezone/10) | 0x08);
     }
 }

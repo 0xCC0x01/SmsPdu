@@ -25,7 +25,7 @@ void SmsDcs::setDcs(unsigned char charSet, unsigned char msgClass, bool setClass
     dcs = *(unsigned char *)&gc;
 }
 
-void SmsDcs::setDcs(unsigned char type, bool active, bool Gsm7, bool autoDelete)
+void SmsDcs::setDcs(MESSAGE_WAITING type, bool active, bool Gsm7, bool autoDelete)
 {
     DcsMessageWaiting mw;
     mw.type = type;
@@ -48,16 +48,16 @@ void SmsDcs::setDcs(unsigned char type, bool active, bool Gsm7, bool autoDelete)
     dcs = *(unsigned char *)&mw;
 }
 
-void SmsDcs::setDcs(unsigned char msgClass, bool Gsm7)
+void SmsDcs::setDcs(MESSAGE_CLASS msgClass, bool Gsm7)
 {
-    DcsDataCoding dc;
-    dc.msgClass = msgClass;
+    DcsMessageClass mc;
+    mc.msgClass = msgClass;
     /* ture: GSM7 or false: 8-bit */
-    dc.charSet = Gsm7;
-    dc.reserved = 0;
-    dc.subGroup = 0x0F;
+    mc.charSet = Gsm7;
+    mc.reserved = 0;
+    mc.subGroup = 0x0F;
 
-    dcs = *(unsigned char *)&dc;
+    dcs = *(unsigned char *)&mc;
 }
 
 string SmsDcs::format()

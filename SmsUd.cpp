@@ -277,9 +277,9 @@ void SmsUd::setPortUdh(int origPort, int destPort, bool use8bit)
 void SmsUd::setIndicationUdh(unsigned char indicationType, unsigned char extendedType, unsigned char messageCount, unsigned char profileId, bool store)
 {
     SmsUdhIe ie = {0};
-    SpecialIndicationHeader header = {0};
+    IndicationHeader header = {0};
 
-    header.type = (extendedType > 0) ? SPECIAL_INDICATION_EXTENDED : indicationType;
+    header.type = (extendedType > 0) ? INDICATION_EXTENDED : indicationType;
     header.extendedType = extendedType;
     header.profileId = profileId;
     header.store = store;
