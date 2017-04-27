@@ -110,7 +110,7 @@ public:
     void setUdh(SmsUdhIe ie, int pos = -1);
 
     /* Set User data content */
-    void setUd(wstring ud, SMS_CHARACTER_SET charSet, int refType = IEI_CONCATENATED_8BIT, int refNum = 0);
+    void setUd(wstring ud, unsigned char charSet, int refType = IEI_CONCATENATED_8BIT, int refNum = 0);
 
     string format(unsigned char segIndex);
 };

@@ -292,7 +292,7 @@ void SmsUd::setIndicationUdh(unsigned char indicationType, unsigned char extende
     setUdh(ie);
 }
 
-void SmsUd::setUd(wstring ud, SMS_CHARACTER_SET charSet, int refType, int refNum)
+void SmsUd::setUd(wstring ud, unsigned char charSet, int refType, int refNum)
 {
     int bits = 0;
     int segCount = 0;
@@ -303,19 +303,10 @@ void SmsUd::setUd(wstring ud, SMS_CHARACTER_SET charSet, int refType, int refNum
      * Original ud is encoded in UCS2/wstring, convert to multibyte/string first
      * Especially for GSM7 character set, need to convert ACSII char to GSM7 alphabet
      */
-    if (CHARACTER_SET_GSM7 == charSet)
+    if (CHARACTER_SET_GSM7 == charSet && CheckGsm7(ud))
     {
-        if (CheckGsm7(ud))
-        {
-            content = ConvertGsm7(ud);
-            bits = 7;
-        }
-        else
-        {
-            /* Exist non Gsm7 character, set charSet to UCS2 */
-            charSet = CHARACTER_SET_UCS2;
-            bits = 16;
-        }
+        content = ConvertGsm7(ud);
+        bits = 7;
     }
     else if (CHARACTER_SET_8BIT == charSet)
     {
